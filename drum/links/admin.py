@@ -10,7 +10,7 @@ from drum.links.models import Link
 
 class LinkAdmin(DisplayableAdmin):
 
-    list_display = ("id", "title", "link", "status", "publish_date",
+    list_display = ("id", "title", "link", "status", "publish_date", "image_url",
                     "user", "comments_count", "rating_sum")
     list_display_links = ("id",)
     list_editable = ("title", "link", "status")
