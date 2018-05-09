@@ -79,7 +79,7 @@ class Command(BaseCommand):
             "title": entry.title,
             "link": self.link_from_entry(entry),
             "gen_description": False,
-            "image_url": image_url,
+            "image_url": image_url["content"] if image_url else "http://www.dummyimage.com",
         }
         try:
             publish_date = entry.published_parsed
