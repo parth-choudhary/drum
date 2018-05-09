@@ -35,6 +35,7 @@ class Link(Displayable, Ownable):
 
     link = models.URLField(null=True,
         blank=(not getattr(settings, "LINK_REQUIRED", False)))
+    image_url = models.URLField(null=True, blank=True)
     rating = RatingField()
     comments = CommentsField()
 
