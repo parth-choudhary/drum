@@ -13,6 +13,9 @@ from mezzanine.generic.models import Rating
 
 from drum.links.models import Link
 
+from urllib import urlopen
+from bs4 import BeautifulSoup
+
 
 class Command(BaseCommand):
 
@@ -69,10 +72,14 @@ class Command(BaseCommand):
         return entry.link
 
     def entry_to_link_dict(self, entry):
+        webpage = urlopen(entry.link)
+        soup = BeautifulSoup(webpage, "html5lib")
+        image_url = soup.find("meta",  property="og:image")
         link = {
             "title": entry.title,
             "link": self.link_from_entry(entry),
             "gen_description": False,
+            "image_url": image_url,
         }
         try:
             publish_date = entry.published_parsed
