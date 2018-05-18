@@ -58,7 +58,6 @@ class Command(BaseCommand):
                 try:
                     obj = Link.objects.get(link=link["link"])
                 except Link.DoesNotExist:
-                    print(link)
                     obj = Link.objects.create(**link)
                     obj.rating.add(Rating(value=1, user_id=user_id),
                         bulk=False)
